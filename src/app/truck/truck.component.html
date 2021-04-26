@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+	<mat-icon>local_shipping</mat-icon>
+	<span>Truck</span>
+	<div>GPS: [{{lat | fixed :6}}, {{lng | fixed :6}}]</div>
+	<span>Temperature: {{temp | fixed: 2}} °F</span>
+	<a mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></a>
+	<mat-menu #menu="matMenu">
+		<button mat-menu-item (click)="temp=temp-1"><mat-icon>ac_unit</mat-icon>- 1°F</button>
+		<mat-divider></mat-divider>
+		<button mat-menu-item (click)="reset()"><mat-icon>home</mat-icon>Restart</button>
+	</mat-menu>
+</mat-toolbar>
+
+<div matRipple style="display:flex" (click)="tick(true)"><img src="assets/truck.jpg"><div style="flex:1;"></div></div>
+
