@@ -10,6 +10,10 @@ Run `ng build --prod` to build the project.
 
 Run `npm start`.
 
+## Minimal Deployment
+
+package.json, IoT.js, dist directory (after prod build).
+
 ## PWA install
 
 Select Install (mobile: Add to home page) 

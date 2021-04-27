@@ -3,17 +3,18 @@
 	<span>Monitor</span>
 	<a mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></a>
 	<mat-menu #menu="matMenu">
-		<button mat-menu-item (click)="fetch()"><mat-icon>restart_alt</mat-icon>Refresh</button>
+		<a mat-menu-item (click)="fetch()"><mat-icon>restart_alt</mat-icon>Refresh</a>
+		<a mat-menu-item (click)="api.chkUpdate()" [disabled]="!api.update"><mat-icon>upgrade</mat-icon>Check for updates</a>
 		<mat-divider></mat-divider>
-		<button mat-menu-item (click)="truck()"><mat-icon>local_shipping</mat-icon> Truck</button>
+		<a mat-menu-item (click)="truck()"><mat-icon>local_shipping</mat-icon>Truck simulator</a>
 	</mat-menu>
 </mat-toolbar>
 <div style="height: 700px;" leaflet [leafletOptions]="mapOpts" [leafletLayers]="layers"></div>
 <div class="mat-elevation-z8">
 	<div style="position: absolute;" class="mat-paginator">
 		<span style="padding: 0 10px;">Minimal Temperature:</span>
-		<mat-form-field appearance="legacy" style="width:60px" (change)="setAlert($event.target)">
-			<input matInput type="number" step="0.1" [value]="minTemp">
+		<mat-form-field appearance="legacy" style="width:50px">
+			<input matInput type="number" step="0.1" [(ngModel)]="minTemp">
 		</mat-form-field>
 	</div>
 	<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>

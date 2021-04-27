@@ -27,7 +27,7 @@ export class MonitorComponent implements OnInit {
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
 	
-	constructor(private api: ApiService, private swPush: SwPush, private http: HttpClient) { }
+	constructor(public api: ApiService, private swPush: SwPush, private http: HttpClient) { }
 
   ngOnInit(): void { this.fetch();
 		this.http.get<Message[]>('init', this.api.bypass).subscribe((res: any) =>
@@ -46,8 +46,8 @@ export class MonitorComponent implements OnInit {
 				{title: `${new Date(p.dt).toLocaleString('us')}\n${p.temp.toFixed(2)}°F`}));
 		})
 	}
+
 	truck() { window.open('#/truck') }
-	setAlert(trg: any) {
-		this.minTemp = trg.value
-	}
+	
+	setAlert(trg: any) { this.minTemp = trg.value	}
 }
