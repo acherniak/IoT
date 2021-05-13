@@ -10,7 +10,7 @@ Run `ng build --prod` to build the project.
 
 Run `npm start`.
 
-## Minimal Deployment
+## Minimal Deployment (4 MB)
 
 package.json, IoT.js, dist directory (after prod build).
 

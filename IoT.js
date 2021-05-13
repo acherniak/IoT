@@ -6,7 +6,7 @@ let messages = [], pushSubscr,
 
 webPush.setVapidDetails('mailto:acherniak@gmail.com', vapid.publicKey, vapid.privateKey);
 
-app.use(express.static('dist/IoT'))
+app.use(express.static('dist'))
 app.use(express.json());
 
 app.get('/init', (req, res) => res.send({ pushKey: vapid.publicKey}));

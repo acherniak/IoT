@@ -9,16 +9,17 @@ import { Message } from './utils';
   providedIn: 'root'
 })
 export class ApiService {
-	bypass = { headers: new HttpHeaders({'ngsw-bypass':'true'}) };
-	start = [40.5254, -74.3912]; update = this.swUpdate.isEnabled && environment.production;
+	bypass = { headers: new HttpHeaders({'ngsw-bypass':'true'}) }; 
+	start = [40.8554, -74.1000]; update = this.swUpdate.isEnabled && environment.production;
   constructor(private http: HttpClient, private swUpdate: SwUpdate, private snackBar: MatSnackBar) { }
 
+	toast(message: string, duration = 5, act?: string) { return this.snackBar.open(message, act, {duration: duration*1000}); }
 	wasItUpdated() {
 		if (this.update) this.swUpdate.available.subscribe(()=> { 
-			this.snackBar.open('Application has been updated', 'Reload Now', {duration:30000}).onAction().subscribe(() => window.location.reload())
+			this.toast('Application has been updated', 30, 'Reload Now').onAction().subscribe(() => window.location.reload())
 		});
 	}
-	chkUpdate() { if (this.update) { this.snackBar.open('Checking for Updates', undefined, {duration:2000}); this.swUpdate.checkForUpdate(); }}
+	chkUpdate() { if (this.update) { this.toast('Checking...', 2); this.swUpdate.checkForUpdate(); }}
 	fetch() { return this.http.get<Message[]>('api') }
 	reset() { return this.http.delete('api') }
 	put(msg: Message) { this.http.put('api', msg).subscribe(()=>{}) }
