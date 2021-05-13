@@ -14,7 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-//import "leaflet/dist/images/marker-shadow.png";
+//import "leaflet/dist/images/marker-shadow.png"; // copy manually
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
